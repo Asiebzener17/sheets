@@ -1,0 +1,74 @@
+{
+  "schema_version": 18,
+  "standard_lib_version": 36,
+  "action_runtime_version": 4,
+  "name": "Tines Support Engineer Technical Task",
+  "description": null,
+  "guid": "e99f37ac48a70894e4f7b3b1a9feca6b",
+  "slug": "tines_support_engineer_technical_task",
+  "agents": [],
+  "diagram_notes": [
+    {
+      "content": "# Task:\n\nBuild a story reaching out to an open API and ending with a page that displays information referenced from your API request. This story must contain 4 of the 7 actions. ",
+      "position": [
+        15.0,
+        315.0
+      ],
+      "guid": "79dfa4f29d67fb76a63fa55042ce3658",
+      "width": 570
+    },
+    {
+      "content": "# Topic: Building using an open API Explainer \n\nThis task involves leveraging multiple actions and reach out to service to build out our very own app. Using pages as a means to create an interface for our users.\n\nWhen we reach out to a service using the HTTP Request action, we sometimes need a credential to have authorized access. An open API indicates a service that doesn't require us to be authorized to request actions be made. This is very typical with services that provide information that you can get.\n\nExamples:\n- [Free Dictionary](https://dictionaryapi.dev/)\n- [Random dog](https://random.dog/)\n- [Serialif Color](https://color.serialif.com/)\n- [DiceBear](https://www.dicebear.com/how-to-use/http-api)\n- [Faker API](https://fakerapi.it/en)\n",
+      "position": [
+        15.0,
+        -30.0
+      ],
+      "guid": "aba430af1bfd8a335e3336d6ad48ee87",
+      "width": 570
+    },
+    {
+      "content": "# Rubric:\n✅ 4 different actions used\n✅ HTTP request action configured to an open API\n✅ Event transform action used for formatting data from the HTTP request action\n✅ Page at the end of your story displaying formatted data",
+      "position": [
+        15.0,
+        420.0
+      ],
+      "guid": "97006c14f72ee784de4e3c18ca8d6de4",
+      "width": 570
+    },
+    {
+      "content": "![Need more context?](https://media.giphy.com/media/l44QzsOLXxcrigdgI/giphy.gif)",
+      "position": [
+        180.0,
+        -255.0
+      ],
+      "guid": "621450dfcd8ad63529feab881d55dc37",
+      "width": 270
+    }
+  ],
+  "links": [],
+  "diagram_layout": "{}",
+  "send_to_story_enabled": false,
+  "entry_agent_guid": null,
+  "exit_agent_guids": [],
+  "exit_agent_guid": null,
+  "api_entry_action_guids": [],
+  "api_exit_action_guids": [],
+  "keep_events_for": 604800,
+  "reporting_status": true,
+  "send_to_story_access": null,
+  "story_library_metadata": {},
+  "monitor_failures": false,
+  "send_to_stories": [],
+  "form": null,
+  "synchronous_webhooks_enabled": false,
+  "forms": [],
+  "pages": [],
+  "tags": [],
+  "time_saved_unit": "minutes",
+  "time_saved_value": 0,
+  "origin_story_identifier": "cloud:25906028d04ba0563447f41dccb3c4cf:ba39be8c3a2d5dff818a19e325150e1a",
+  "integration_product": null,
+  "integration_vendor": null,
+  "exported_at": "2023-10-27T12:41:50Z",
+  "integrations": []
+}

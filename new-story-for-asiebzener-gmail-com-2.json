@@ -1,0 +1,500 @@
+{
+  "schema_version": 18,
+  "standard_lib_version": 47,
+  "action_runtime_version": 8,
+  "name": "New story for asiebzener@gmail.com (2)",
+  "description": null,
+  "guid": "7310a18e87edd55abb3f61646535d770",
+  "slug": "new_story_for_asiebzener_gmail_com_2",
+  "agents": [
+    {
+      "type": "Agents::HTTPRequestAgent",
+      "name": "HTTP Request Action",
+      "disabled": false,
+      "description": null,
+      "guid": "50e7e8d61ee96f609f11f1b2a30dd16f",
+      "origin_story_identifier": "cloud:0ce9fc26a729ab8bf15a2db3dbce2437:7310a18e87edd55abb3f61646535d770",
+      "options": {
+        "url": "https://fakerapi.it/api/v1/books?_quantity=1",
+        "content_type": "application_json",
+        "method": "get"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::EventTransformationAgent",
+      "name": "Event Transform Action",
+      "disabled": false,
+      "description": null,
+      "guid": "d8b5a9409f5098852ab65a6aef460d28",
+      "origin_story_identifier": "cloud:0ce9fc26a729ab8bf15a2db3dbce2437:7310a18e87edd55abb3f61646535d770",
+      "options": {
+        "mode": "automatic",
+        "input": "=http_request_action",
+        "guidance": "mix up the title and description and return in json format",
+        "language": "Python",
+        "script": "def main(input):\n    return {\n        \"description\": input.get('body', {}).get('data', [{}])[0].get('title'),\n        \"title\": input.get('body', {}).get('data', [{}])[0].get('description')\n    }"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    },
+    {
+      "type": "Agents::FormAgent",
+      "name": "New Page",
+      "disabled": false,
+      "description": null,
+      "guid": "bbb727743604699561761c24086c170d",
+      "origin_story_identifier": "cloud:0ce9fc26a729ab8bf15a2db3dbce2437:7310a18e87edd55abb3f61646535d770",
+      "options": {
+        "fields": "",
+        "mode": "success_page",
+        "submissionMessage": "Thank you for your submission",
+        "visibility": "tenant",
+        "anonymize": false,
+        "auto_submit": false,
+        "page_logo": {
+          "contents": "iVBORw0KGgoAAAANSUhEUgAAAFQAAAAYCAYAAABk8drWAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAARCSURBVHgB7VhLctpAEB1k7LVyA/kEgRMEn8BQ5e8qcALjE1icAPsEkJW/VeATwA1QTmDlBCE7l3/kPblbTIiMJcVOeaFXBRrN9Mz0vOnu6ZExBQoUKFCgwAdByX4ZDAbuw8PDwWw2a+LVk+rAcZxgZWWl02g0QpMSl5eXXRlnvLq62kLfqcmIi4uLZqlU+lwulztJ/aGvJ/p+39nZ6cu8R3j30c/f3t7umP8MRwtXV1df7+/vb6iMmZNJVJ6enppom5ydnbVNCpAIjENZF786Fn1kMgLE1PDocRz0HyTJQKe2zNOjMbBO3o1sZgS2Ybw29KqYd0ZEKMg8AGl980zAS3BhqV0Sv0Qmsho8/iCQi5T6XED/WtJmoj7W9/b2Vgk9gXUGWM+JtoF4H/VdFEdK/HvB4UIxuZ+2A2SPlykFayLhXkJ9z/wDsJlHaTZld3fXR4ho7O3tHWudRbyrxC+Ca+L4rxFuyXlJ7c7j4yOtKcuuuXd3d+0XJvMkZPwFWpm4cV64sLTBawuGB/UYus7Pz7vUB3NOYLGxV+EsuIHrT2ydITNCn5/sxyfaKdO0x02Qo8wNY7Yt52ChmeOKraAN2ZxlyBxLZb6xFCuvxWN4UE361PGYYn1egli0KSQJxIy42VIfso959rCehplFOYYUkY0MCJvn68C5CDUJLi2ho7msExVa3Pk0QL9veJxIuZ3W0pkZIMNYR3GodSBjA3VVlsUAPK1HprCOuqoQpmHGRV3FzNfcQvZQpSx06YjcFx3fMW8E7mBK0W6egwEk+ObZKkjqIO0hR1Ih/0vfYeGhpmAwgLpUX4OkMQv7+/shCNV0i+GtBrlYX5Kn2QLjNTeCMVvby6KkZ7IhsF/E6jyTDhqDfZMBJAHzUHHGP1cOuR8mJ05PTz0zPzs2MfZM20BgLAfCXGzmEAYTWbN4YRPy3JQxNusauo1V3hF3yopg4T1TbISSB3nSKLhZgL6HLDN8oLxp3ga8vPSTfnD3MTcTzw1ypeHASI6NX88+5Jy1tTWmF1luMRw8voHIKeeZbHBTHGCJgGseW4dU7pySrm3m6w62trZa9o/kQcdrkTNwaw9c8fZVhcV+oqtb5FY0DDgSTw7TKgKT7+gkhH0jyQK6Tt4kG+7eMtmMIAasLj6ELULqtsfw8oJ1jdA+YGjgLYvvPCcoR84Yc63+UWiIxucf78HiSsuUZFvLTpgF73rzSAI3FMS0MnQJtUCSmD/KdwvdGFfyygnb5NZIBGI8ShzTpwnzUcpaWU2oh1p8ytOVmDIsxIlImOkB0w/9AGFDFhaabJhCmcNlH0zgYoGxXHKxHW451LSF86vXQPdQ6sYqy7BmhYlofs7NPpImaZumR5y3jzVvsFLI0nW6ko9WRG6oaVg0v/nA0JCwjHhx1aktw3jGA+yF8dykr2ZisRVsZLg4XpIcSGWOG+b5ilagQIECBZLxG5sJ41WbSDouAAAAAElFTkSuQmCC\n",
+          "display_logo": false,
+          "name": "nites.jpeg",
+          "type": "image/jpeg"
+        },
+        "page_width": "small",
+        "pages_action_color": "#777FFF",
+        "pages_appearance_mode": "light",
+        "pages_background_color": "#F9F9F9",
+        "url_identifier": "1244bd34346e7844e02616012069f788"
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null
+    },
+    {
+      "type": "Agents::EmailAgent",
+      "name": "Send Email Action",
+      "disabled": false,
+      "description": null,
+      "guid": "d1c7c9f45f9b38042830f21627273639",
+      "origin_story_identifier": "cloud:0ce9fc26a729ab8bf15a2db3dbce2437:7310a18e87edd55abb3f61646535d770",
+      "options": {
+        "recipients": "asiebzener@gmail.com",
+        "reply_to": "asiebzener@gmail.com",
+        "sender_name": "Allen Siebzener",
+        "subject": "Example email from Tines",
+        "body": "<<new_page>>",
+        "advanced_html": true
+      },
+      "reporting": {
+        "time_saved_value": 0,
+        "time_saved_unit": "minutes"
+      },
+      "monitoring": {
+        "monitor_all_events": false,
+        "monitor_failures": false,
+        "monitor_no_events_emitted": null
+      },
+      "template": {
+        "created_from_template_guid": null,
+        "created_from_template_version": null,
+        "template_tags": []
+      },
+      "width": null,
+      "schedule": null
+    }
+  ],
+  "diagram_notes": [],
+  "links": [
+    {
+      "source": 0,
+      "receiver": 1
+    },
+    {
+      "source": 1,
+      "receiver": 2
+    },
+    {
+      "source": 2,
+      "receiver": 3
+    }
+  ],
+  "diagram_layout": "{\"50e7e8d61ee96f609f11f1b2a30dd16f\":[-75,15],\"d8b5a9409f5098852ab65a6aef460d28\":[-75,120],\"bbb727743604699561761c24086c170d\":[-75,240],\"d1c7c9f45f9b38042830f21627273639\":[-75,540]}",
+  "send_to_story_enabled": false,
+  "entry_agent_guid": null,
+  "exit_agent_guids": [],
+  "exit_agent_guid": null,
+  "api_entry_action_guids": [],
+  "api_exit_action_guids": [],
+  "keep_events_for": 86400,
+  "reporting_status": true,
+  "send_to_story_access": null,
+  "story_library_metadata": {},
+  "parent_only_send_to_story": false,
+  "monitor_failures": false,
+  "send_to_stories": [],
+  "form": {
+    "fields": [
+      {
+        "name": "Paragraph",
+        "description": "",
+        "required": false,
+        "type": "PARAGRAPH",
+        "multi_select": false,
+        "options": [
+          "Option 1",
+          "Option 2"
+        ],
+        "ranking": 0,
+        "max_characters": null,
+        "default_value": null,
+        "content": "Use the panel on the left to style and manage your page. Edit, sort, and delete page elements by selecting them on the page. And add new elements by dragging them from the left panel and onto the page."
+      },
+      {
+        "name": "Button",
+        "description": "",
+        "required": false,
+        "type": "BUTTON",
+        "multi_select": false,
+        "options": [
+          "Option 1",
+          "Option 2"
+        ],
+        "ranking": 0,
+        "max_characters": null,
+        "default_value": null,
+        "content": "Submit"
+      },
+      {
+        "name": "Rich text",
+        "description": "",
+        "required": false,
+        "type": "PARAGRAPH",
+        "multi_select": false,
+        "options": [
+          "Option 1",
+          "Option 2"
+        ],
+        "ranking": 0,
+        "max_characters": null,
+        "default_value": "",
+        "content": "<<CAPITALIZE(event_transform_action.output.title)>>"
+      },
+      {
+        "name": "Heading",
+        "description": "",
+        "required": false,
+        "type": "TITLE",
+        "multi_select": false,
+        "options": [
+          "Option 1",
+          "Option 2"
+        ],
+        "ranking": 0,
+        "max_characters": null,
+        "default_value": "",
+        "content": "messed up content"
+      },
+      {
+        "name": "Mixed up titles",
+        "description": "",
+        "required": false,
+        "type": "OPTION",
+        "multi_select": false,
+        "options": [
+          "<<CAPITALIZE(http_request_action.body.status)>>"
+        ],
+        "ranking": 0,
+        "max_characters": null,
+        "default_value": "[]",
+        "content": null
+      }
+    ],
+    "visibility": "tenant",
+    "agent_guid": "bbb727743604699561761c24086c170d",
+    "success_message": "Thank you for your submission",
+    "loading_message": ""
+  },
+  "synchronous_webhooks_enabled": false,
+  "forms": [
+    {
+      "fields": [
+        {
+          "name": "Paragraph",
+          "description": "",
+          "required": false,
+          "type": "PARAGRAPH",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": null,
+          "content": "Use the panel on the left to style and manage your page. Edit, sort, and delete page elements by selecting them on the page. And add new elements by dragging them from the left panel and onto the page."
+        },
+        {
+          "name": "Button",
+          "description": "",
+          "required": false,
+          "type": "BUTTON",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": null,
+          "content": "Submit"
+        },
+        {
+          "name": "Rich text",
+          "description": "",
+          "required": false,
+          "type": "PARAGRAPH",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": "",
+          "content": "<<CAPITALIZE(event_transform_action.output.title)>>"
+        },
+        {
+          "name": "Heading",
+          "description": "",
+          "required": false,
+          "type": "TITLE",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": "",
+          "content": "messed up content"
+        },
+        {
+          "name": "Mixed up titles",
+          "description": "",
+          "required": false,
+          "type": "OPTION",
+          "multi_select": false,
+          "options": [
+            "<<CAPITALIZE(http_request_action.body.status)>>"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": "[]",
+          "content": null
+        }
+      ],
+      "visibility": "tenant",
+      "agent_guid": "bbb727743604699561761c24086c170d",
+      "success_message": "Thank you for your submission",
+      "loading_message": ""
+    }
+  ],
+  "pages": [
+    {
+      "containers": [
+        {
+          "guid": "a91dd614eb53f468ab5d205a9ca392df",
+          "ranking": 0,
+          "category": 0
+        },
+        {
+          "guid": "e8e307a3c2a5763c8e09d8595d0d0bf2",
+          "ranking": 1207959552,
+          "category": 0
+        },
+        {
+          "guid": "368ff33cc695820c6b391fff6d73cb41",
+          "ranking": 1409286144,
+          "category": 0
+        },
+        {
+          "guid": "289df160f891dcda1895d41a5a85566b",
+          "ranking": 1610612736,
+          "category": 0
+        },
+        {
+          "guid": "2321d02d256fda3be0c876816e2c8e43",
+          "ranking": 1879048192,
+          "category": 0
+        }
+      ],
+      "fields": [
+        {
+          "name": "Paragraph",
+          "description": "",
+          "required": false,
+          "type": "PARAGRAPH",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": null,
+          "content": "Use the panel on the left to style and manage your page. Edit, sort, and delete page elements by selecting them on the page. And add new elements by dragging them from the left panel and onto the page.",
+          "validation_pattern": null,
+          "style": "primary",
+          "container_guid": "2321d02d256fda3be0c876816e2c8e43",
+          "graph_type": 0,
+          "graph_direction": "HORIZONTAL",
+          "date_mode": "DATE",
+          "store_value_as": ""
+        },
+        {
+          "name": "Button",
+          "description": "",
+          "required": false,
+          "type": "BUTTON",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": null,
+          "content": "Submit",
+          "validation_pattern": null,
+          "style": "primary",
+          "container_guid": "289df160f891dcda1895d41a5a85566b",
+          "graph_type": 0,
+          "graph_direction": "HORIZONTAL",
+          "date_mode": "DATE",
+          "store_value_as": ""
+        },
+        {
+          "name": "Rich text",
+          "description": "",
+          "required": false,
+          "type": "PARAGRAPH",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": "",
+          "content": "<<CAPITALIZE(event_transform_action.output.title)>>",
+          "validation_pattern": null,
+          "style": "primary",
+          "container_guid": "e8e307a3c2a5763c8e09d8595d0d0bf2",
+          "graph_type": 0,
+          "graph_direction": "HORIZONTAL",
+          "date_mode": "DATE",
+          "store_value_as": "=password_value"
+        },
+        {
+          "name": "Heading",
+          "description": "",
+          "required": false,
+          "type": "TITLE",
+          "multi_select": false,
+          "options": [
+            "Option 1",
+            "Option 2"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": "",
+          "content": "messed up content",
+          "validation_pattern": null,
+          "style": "primary",
+          "container_guid": "a91dd614eb53f468ab5d205a9ca392df",
+          "graph_type": 0,
+          "graph_direction": "HORIZONTAL",
+          "date_mode": "DATE",
+          "store_value_as": ""
+        },
+        {
+          "name": "Mixed up titles",
+          "description": "",
+          "required": false,
+          "type": "OPTION",
+          "multi_select": false,
+          "options": [
+            "<<CAPITALIZE(http_request_action.body.status)>>"
+          ],
+          "ranking": 0,
+          "max_characters": null,
+          "default_value": "[]",
+          "content": null,
+          "validation_pattern": null,
+          "style": "primary",
+          "container_guid": "368ff33cc695820c6b391fff6d73cb41",
+          "graph_type": 0,
+          "graph_direction": "HORIZONTAL",
+          "date_mode": "DATE",
+          "store_value_as": "=password_value"
+        }
+      ],
+      "visibility": "tenant",
+      "agent_guid": "bbb727743604699561761c24086c170d",
+      "success_message": "Thank you for your submission",
+      "loading_message": "",
+      "logo_contents": "iVBORw0KGgoAAAANSUhEUgAAAFQAAAAYCAYAAABk8drWAAAACXBIWXMAAAsT\nAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAARCSURB\nVHgB7VhLctpAEB1k7LVyA/kEgRMEn8BQ5e8qcALjE1icAPsEkJW/VeATwA1Q\nTmDlBCE7l3/kPblbTIiMJcVOeaFXBRrN9Mz0vOnu6ZExBQoUKFCgwAdByX4Z\nDAbuw8PDwWw2a+LVk+rAcZxgZWWl02g0QpMSl5eXXRlnvLq62kLfqcmIi4uL\nZqlU+lwulztJ/aGvJ/p+39nZ6cu8R3j30c/f3t7umP8MRwtXV1df7+/vb6iM\nmZNJVJ6enppom5ydnbVNCpAIjENZF786Fn1kMgLE1PDocRz0HyTJQKe2zNOj\nMbBO3o1sZgS2Ybw29KqYd0ZEKMg8AGl980zAS3BhqV0Sv0Qmsho8/iCQi5T6\nXED/WtJmoj7W9/b2Vgk9gXUGWM+JtoF4H/VdFEdK/HvB4UIxuZ+2A2SPlykF\nayLhXkJ9z/wDsJlHaTZld3fXR4ho7O3tHWudRbyrxC+Ca+L4rxFuyXlJ7c7j\n4yOtKcuuuXd3d+0XJvMkZPwFWpm4cV64sLTBawuGB/UYus7Pz7vUB3NOYLGx\nV+EsuIHrT2ydITNCn5/sxyfaKdO0x02Qo8wNY7Yt52ChmeOKraAN2ZxlyBxL\nZb6xFCuvxWN4UE361PGYYn1egli0KSQJxIy42VIfso959rCehplFOYYUkY0M\nCJvn68C5CDUJLi2ho7msExVa3Pk0QL9veJxIuZ3W0pkZIMNYR3GodSBjA3VV\nlsUAPK1HprCOuqoQpmHGRV3FzNfcQvZQpSx06YjcFx3fMW8E7mBK0W6egwEk\n+ObZKkjqIO0hR1Ih/0vfYeGhpmAwgLpUX4OkMQv7+/shCNV0i+GtBrlYX5Kn\n2QLjNTeCMVvby6KkZ7IhsF/E6jyTDhqDfZMBJAHzUHHGP1cOuR8mJ05PTz0z\nPzs2MfZM20BgLAfCXGzmEAYTWbN4YRPy3JQxNusauo1V3hF3yopg4T1TbISS\nB3nSKLhZgL6HLDN8oLxp3ga8vPSTfnD3MTcTzw1ypeHASI6NX88+5Jy1tTWm\nF1luMRw8voHIKeeZbHBTHGCJgGseW4dU7pySrm3m6w62trZa9o/kQcdrkTNw\naw9c8fZVhcV+oqtb5FY0DDgSTw7TKgKT7+gkhH0jyQK6Tt4kG+7eMtmMIAas\nLj6ELULqtsfw8oJ1jdA+YGjgLYvvPCcoR84Yc63+UWiIxucf78HiSsuUZFvL\nTpgF73rzSAI3FMS0MnQJtUCSmD/KdwvdGFfyygnb5NZIBGI8ShzTpwnzUcpa\nWU2oh1p8ytOVmDIsxIlImOkB0w/9AGFDFhaabJhCmcNlH0zgYoGxXHKxHW45\n1LSF86vXQPdQ6sYqy7BmhYlofs7NPpImaZumR5y3jzVvsFLI0nW6ko9WRG6o\naVg0v/nA0JCwjHhx1aktw3jGA+yF8dykr2ZisRVsZLg4XpIcSGWOG+b5ilag\nQIECBZLxG5sJ41WbSDouAAAAAElFTkSuQmCC\n",
+      "logo_filename": "nites.jpeg",
+      "display_logo": false,
+      "icon": ":dvd:"
+    }
+  ],
+  "tags": [],
+  "time_saved_unit": "minutes",
+  "time_saved_value": 0,
+  "origin_story_identifier": "cloud:0ce9fc26a729ab8bf15a2db3dbce2437:7310a18e87edd55abb3f61646535d770",
+  "integration_product": null,
+  "integration_vendor": null,
+  "exported_at": "2024-06-04T18:55:51Z",
+  "icon": ":magnet:",
+  "integrations": []
+}
